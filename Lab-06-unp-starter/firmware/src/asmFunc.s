@@ -14,7 +14,7 @@
 .type nameStr,%gnu_unique_object
     
 /*** STUDENTS: Change the next line to your name!  **/
-nameStr: .asciz "Inigo Montoya"  
+nameStr: .asciz "Ian Moser"  
  
 .align    /* ensure following vars are allocated on word-aligned addresses */
 
@@ -72,7 +72,24 @@ asmFunc:
      * Use it to test the C test code */
     
     /*** STUDENTS: Place your code BELOW this line!!! **************/
-
+    ldr r1, =a_value
+    ldr r2, =b_value
+    /* making sure my variables are accessible so they can be stored*/ 
+    
+    mov r4, r0
+    asr r4, r4, 16
+    /*in theory I could just asr r0 into r4 but moving it first and then doing
+     asr gives me an extra layer of safety so I don't tamper with the value
+     I'll need later*/
+    str r4, [r1]
+    
+    mov r5, r0
+    ror r5, r5, 16
+    asr r5, r5, 16
+    /*ror moves the 16 bits from the LSB to the MSB so I can sigh exstend them
+     with asr.*/
+    str r5, [r2]
+    
     
     /*** STUDENTS: Place your code ABOVE this line!!! **************/
 
